@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mubende Parents Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background: #0a5c36;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .mission {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .timer {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0a5c36;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0a5c36;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #0a5c36;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #084a2c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #0a5c36;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mubende Parents Pro</h1>
+    <p>Together for Education, Unity & Friendship</p>
+</header>
+
+<section>
+    <div class="mission">
+        <h2>Our Mission</h2>
+        <p>
+            Mubende Parents Pro promotes <strong>unity, friendship, and cooperation</strong>
+            among students. We work closely with parents and schools to create a supportive,
+            respectful, and inspiring learning environment for every child.
+        </p>
+    </div>
+
+    <div class="countdown">
+        <h2>First Term Begins In</h2>
+        <div class="timer" id="countdown">Loading...</div>
+        <p>Prepare early for a successful academic term.</p>
+    </div>
+
+    <form id="registrationForm">
+        <h2>Student Registration Form</h2>
+
+        <label>Student Full Name</label>
+        <input type="text" required>
+
+        <label>Date of Birth</label>
+        <input type="date" required>
+
+        <label>Gender</label>
+        <select required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <label>Class</label>
+        <input type="text" placeholder="e.g Primary 5 / Senior 2" required>
+
+        <label>Parent/Guardian Name</label>
+        <input type="text" required>
+
+        <label>Parent/Guardian Contact</label>
+        <input type="tel" placeholder="e.g 07XXXXXXXX" required>
+
+        <button type="submit">Register Student</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2026 Mubende Parents Pro. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Set countdown to 25 days from now
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() + 25);
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = startDate.getTime() - now;
+
+        if (distance <= 0) {
+            document.getElementById("countdown").innerHTML = "First Term Has Started!";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+            days + " Days " + hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Simple form submission alert
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Student registered successfully!");
+        this.reset();
+    });
+</script>
+
+</body>
+</html>
